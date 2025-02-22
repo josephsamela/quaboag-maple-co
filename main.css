@@ -53,10 +53,10 @@ p {
 }
 .tag img {
     margin: 1em auto 1em auto;
-    width: 100px;
+    width: 80px;
 }
 .tag h1 {
-    margin: 14px 0px 0px 0px;
+    margin: 14px 0px 10px 0px;
     font-size: 16pt;
 }
 .tag th {
