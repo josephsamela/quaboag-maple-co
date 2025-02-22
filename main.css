@@ -1,12 +1,13 @@
 @font-face {
     font-family: NationalPark;
     src: url(font.ttf);
-  }
+}
 
 body {
     margin: 0px;
     padding: 0px 1em 1em 1em;
-    font-family: NationalPark;
+    font-family: 'NationalPark';
+    font-synthesis: none !important;
 }
 
 .section {
@@ -20,45 +21,44 @@ table {
     width: 100%;
 }
 table th {
-  text-align: left;
+    text-align: left;
 }
 td {
-  height: 23px;
+    height: 23px;
 }
 
 .wrapper {
-  display: inline-grid;
-  grid-template-columns: repeat(2, [col-start] 1fr);
-  grid-row-gap: 0.5em;
-  grid-column-gap: 1em;
+    display: inline-grid;
+    grid-template-columns: repeat(2, [col-start] 1fr);
+    grid-row-gap: 0.5em;
+    grid-column-gap: 1em;
 }
 .wrapper img {
-  width: 100%;
-  border-radius: 12px;
-
+    width: 100%;
+    border-radius: 12px;  
 }
 
 p {
-  margin: 0px;
+    margin: 0px;
 }
 
 .tag {
-  margin: 0px auto 0px auto;
-  width: 218px;
-  height: 332px;
-  border: 4px solid black;
-  border-radius: 12px;
-  justify-content: center;
-  display: grid;
+    margin: 0px auto 0px auto;
+    width: 218px;
+    height: 332px;
+    border: 4px solid black;
+    border-radius: 12px;
+    justify-content: center;
+    display: grid;
 }
 .tag img {
-  margin: 0px auto 0px auto;
-  width: 100px;
+    margin: 0px auto 0px auto;
+    width: 100px;
 }
 .tag h1 {
-  margin: 14px 0px 0px 0px;
-  font-size: 16pt;
+    margin: 14px 0px 0px 0px;
+    font-size: 16pt;
 }
 .tag th {
-  width: 108px;
+    width: 108px;
 }
