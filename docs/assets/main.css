@@ -78,7 +78,7 @@ p {
 }
 
 #map { 
-    height: 250px; 
+    height: 210px; 
     border-radius: 12px;
     margin: 1em 0px 1em 0px;
 }
@@ -86,4 +86,20 @@ p {
 a {
     color: black;
     text-decoration: none;
+}
+
+.map-pin {
+    filter: hue-rotate(170deg)
+}
+
+.map-pin-text {
+    font-family: 'NationalPark';
+    background-color: transparent;
+    border: transparent;
+    color: white;
+    box-shadow: none;
+    opacity: 1;
+}
+.map-pin-text::before {
+    border: none;
 }

@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     
     <link rel="icon" href="../assets/favicon.png" type="image/x-icon" />
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
     <link rel="stylesheet" type="text/css" media="screen" href="../assets/main.css" />
 
     <title>Quaboag Maple Co. | Tree {{ tree.id }}</title>
@@ -73,6 +75,13 @@
         </table>
     </div>
 
+    <!-- Location -->
+    <div class="section">
+        <h2>Location</h2>
+        <p>{{ tree.description }}</p>
+        <div id="map"></div>
+    </div>
+
     <!-- Photos -->
     <div class="section">
         <h2>Photos</h2>
@@ -112,3 +121,52 @@
     </div>
 
 </body>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src='https://api.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v1.0.1/Leaflet.fullscreen.min.js'></script>
+<link href='https://api.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v1.0.1/leaflet.fullscreen.css' rel='stylesheet' />
+
+<script>
+
+    latlon = [
+        {{ tree.latitude }},
+        {{ tree.longitude }}
+    ]
+
+    map = L.map(
+        'map', 
+        {
+            zoomControl: false, 
+            attributionControl: false,
+            minZoom: 14,
+            maxZoom: 18
+        }
+    ).setView(
+        latlon,
+        16
+    );
+
+    map.addControl(new L.Control.Fullscreen());
+
+    L.tileLayer(
+        'http://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}',{
+        maxZoom: 20,
+        subdomains:['mt0','mt1','mt2','mt3']
+    }).addTo(map);
+
+    marker = L.marker(latlon)
+
+    marker.bindTooltip(
+        "TREE {{ tree.id }}", 
+        {
+            permanent: true, 
+            direction : 'bottom',
+            className: "map-pin-text", 
+            offset: [-15, 20],
+        }
+    );
+    marker.addTo(map);
+
+    marker._icon.classList.add("map-pin")
+
+</script>
