@@ -33,7 +33,7 @@ def main():
         )
         render_page(
             page, 
-            filename=f"site/tree/{tree['id']}.html"
+            filename=f"docs/tree/{tree['id']}.html"
         )
 
         # Generate tree QR code
@@ -42,11 +42,11 @@ def main():
             image_factory=qrcode.image.svg.SvgPathImage,
             border=0
         )
-        img.save(f'site/assets/qr/{tree["id"]}.svg')
+        img.save(f'docs/assets/qr/{tree["id"]}.svg')
 
     # Render inventory page
     page = template_inventory.render(trees=trees)
-    render_page(page, "site/index.html")
+    render_page(page, "docs/index.html")
 
 
 def render_page(page, filename):
