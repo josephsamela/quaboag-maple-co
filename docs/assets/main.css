@@ -88,11 +88,6 @@ p {
     margin: 1em 0px 1em 0px;
 }
 
-a {
-    color: black;
-    text-decoration: none;
-}
-
 .map-pin {
     filter: hue-rotate(170deg)
 }
@@ -109,7 +104,7 @@ a {
     border: none;
 }
 
-.maplink {
-    color: blue;
-    text-decoration: underline;
+.plain-link {
+    color: black;
+    text-decoration: none;
 }
