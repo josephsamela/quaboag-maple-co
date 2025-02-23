@@ -125,9 +125,11 @@
 
 </body>
 
+<!-- Leaflet -->
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<!-- Leaflet Fullscreen -->
+<link href='https://api.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v1.0.1/leaflet.fullscreen.css' rel='stylesheet'/>
 <script src='https://api.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v1.0.1/Leaflet.fullscreen.min.js'></script>
-<link href='https://api.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v1.0.1/leaflet.fullscreen.css' rel='stylesheet' />
 
 <script>
 
@@ -141,21 +143,24 @@
         {
             zoomControl: false, 
             attributionControl: false,
-            minZoom: 14,
+            minZoom: 15,
             maxZoom: 18
         }
     ).setView(
         latlon,
-        16
+        17
     );
 
     map.addControl(new L.Control.Fullscreen());
 
     L.tileLayer(
-        'http://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}',{
-        maxZoom: 20,
-        subdomains:['mt0','mt1','mt2','mt3']
-    }).addTo(map);
+        'http://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}',
+        {
+            maxZoom: 18,
+            subdomains:['mt0','mt1','mt2','mt3'],
+            ext: 'png'
+        }
+    ).addTo(map);
 
     marker = L.marker(latlon)
 
