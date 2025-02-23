@@ -5,10 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     
-    <link rel="icon" href="../../favicon.png" type="image/x-icon" />
-    <link rel="stylesheet" type="text/css" media="screen" href="../../main.css" />
+    <link rel="icon" href="../assets/favicon.png" type="image/x-icon" />
+    <link rel="stylesheet" type="text/css" media="screen" href="../assets/main.css" />
 
-    <title>Quaboag Maple Co. | Tree 01</title>
+    <title>Quaboag Maple Co. | Tree {{ tree.id }}</title>
 </head>
 
 <body>
@@ -20,30 +20,30 @@
             <table>
                 <tr>
                     <th>TREE</th>
-                    <td>01</td>
+                    <td>{{ tree.id }}</td>
                 </tr>
                 <tr>
                     <th>GENUS</th>
-                    <td>Maple</td>
+                    <td>{{ tree.genus.title() }}</td>
                 </tr>
                 <tr>
                     <th>SPECIES</th>
-                    <td>Sugar</td>
+                    <td>{{ tree.species.title() }}</td>
                 </tr>
                 <tr>
                     <th>LATITUDE</th>
-                    <td>42°11'23" N</td>
+                    <td>{{ tree.latitude | format_latitude }}</td>
                 </tr>
                 <tr>
                     <th>LONGITUDE</th>
-                    <td>72°3'40" W</td>
+                    <td>{{ tree.longitude | format_longitude }}</td>
                 </tr>
                 <tr>
                     <th>ELEVATION</th>
-                    <td>400ft</td>
+                    <td>{{ tree.elevation }}</td>
                 </tr>
             </table>
-            <img src="qr.png">
+            <img src="../assets/qr/{{ tree.id }}.svg">
         </div>
     </div>
 
@@ -57,42 +57,19 @@
                 <th>END</th>
                 <th>YIELD</th>
             </tr>
+            {% for yield in yields %}
             <tr>
-                <td>2025</td>
-                <td>Feb 8, 2025</td>
-                <td>Mar 8, 2025</td>
-                <td>-</td>
+                <td>{{ yield.season }}</td>
+                <td>{{ yield.start | format_date }}</td>
+                <td>{{ yield.end | format_date }}</td>
+
+                {% if yield.yield is number %}
+                <td>{{ yield.yield }} gal</td>
+                {% else %}
+                <td>{{ yield.yield }}</td>
+                {% endif %}
             </tr>
-            <tr>
-                <td>2026</td>
-                <td>-</td>
-                <td>-</td>
-                <td>-</td>
-            </tr>
-            <tr>
-                <td>2027</td>
-                <td>-</td>
-                <td>-</td>
-                <td>-</td>
-            </tr>
-            <tr>
-                <td>2028</td>
-                <td>-</td>
-                <td>-</td>
-                <td>-</td>
-            </tr>
-            <tr>
-                <td>2029</td>
-                <td>-</td>
-                <td>-</td>
-                <td>-</td>
-            </tr>
-            <tr>
-                <td>2030</td>
-                <td>-</td>
-                <td>-</td>
-                <td>-</td>
-            </tr>
+            {% endfor %}
         </table>
     </div>
 
@@ -101,26 +78,26 @@
         <h2>Photos</h2>
         <div class="wrapper">
             <div>
-                <a href="spring.jpg">
-                    <img src="spring.jpg" />
+                <a href="../assets/photos/{{ tree.id }}_spring.jpg">
+                    <img src="../assets/photos/{{ tree.id }}_spring.jpg" />
                 </a>
                 <p>Spring</p>
             </div>
             <div>
-                <a href="summer.jpg">
-                    <img src="summer.jpg" />
+                <a href="../assets/photos/{{ tree.id }}_summer.jpg">
+                    <img src="../assets/photos/{{ tree.id }}_summer.jpg" />
                 </a>
                 <p>Summer</p>
             </div>
             <div>
-                <a href="autumn.jpg">
-                    <img src="autumn.jpg" />                        
+                <a href="../assets/photos/{{ tree.id }}_autumn.jpg">
+                    <img src="../assets/photos/{{ tree.id }}_autumn.jpg" />                        
                 </a>
                 <p>Autumn</p>
             </div>
             <div>
-                <a href="winter.jpg">
-                    <img src="winter.jpg" />
+                <a href="../assets/photos/{{ tree.id }}_winter.jpg">
+                    <img src="../assets/photos/{{ tree.id }}_winter.jpg" />
                 </a>
                 <p>Winter</p>
             </div>
@@ -129,7 +106,7 @@
 
     <!-- Back Button -->
     <div class="section">
-        <a href="../../index.html">
+        <a href="../index.html">
             <h3>←  Return to Tree Inventory.</h3>
         </a>
     </div>

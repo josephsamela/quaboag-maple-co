@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <link rel="icon" href="assets/favicon.png" type="image/x-icon" />
+    <link rel="stylesheet" type="text/css" media="screen" href="assets/main.css" />
+
+    <title>Quaboag Maple Co.</title>
+</head>
+
+<body>
+
+    <div class="section text-center">
+
+        <h1>Quaboag Maple Co.</h1>
+        <p>Tree Inventory. Click tag for details.</p>
+
+        {% for tree in trees %}
+        <a href="tree/{{ tree.id }}.html">
+            <div class="section">
+                <div class="tag">
+                    <h1>Quaboag Maple Co.</h1>
+                    <table>
+                        <tr>
+                            <th>TREE</th>
+                            <td>{{ tree.id }}</td>
+                        </tr>
+                        <tr>
+                            <th>GENUS</th>
+                            <td>{{ tree.genus.title() }}</td>
+                        </tr>
+                        <tr>
+                            <th>SPECIES</th>
+                            <td>{{ tree.species.title() }}</td>
+                        </tr>
+                        <tr>
+                            <th>LATITUDE</th>
+                            <td>{{ tree.latitude | format_latitude }}</td>
+                        </tr>
+                        <tr>
+                            <th>LONGITUDE</th>
+                            <td>{{ tree.longitude | format_longitude }}</td>
+                        </tr>
+                        <tr>
+                            <th>ELEVATION</th>
+                            <td>{{ tree.elevation }}ft</td>
+                        </tr>
+                    </table>
+                    <img src="assets/qr/{{ tree.id }}.svg">
+                </div>
+            </div>
+        </a>
+        {% endfor %}
+    </div>
+
+</body>
