@@ -52,8 +52,13 @@ td {
     background-color: lightgray;
 }
 
+.subtitle {
+    text-align: center;
+}
+
 p {
     margin: 0px;
+    text-align: justify;
 }
 
 .tag {
@@ -102,4 +107,9 @@ a {
 }
 .map-pin-text::before {
     border: none;
+}
+
+.maplink {
+    color: blue;
+    text-decoration: underline;
 }
