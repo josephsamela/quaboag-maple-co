@@ -7,7 +7,7 @@ body {
     margin: 0px;
     font-family: 'NationalPark';
     font-synthesis: none !important;
-    padding: 1em;
+    padding: 0px 1em 1em 1em;
 }
 
 .section {
@@ -48,7 +48,7 @@ td {
 }
 .summary {
     grid-template-columns: repeat(3, [col-start] 1fr);
-    grid-column-gap: 3.75em;
+    grid-column-gap: 2.5em;
 }
 .wrapper img {
     width: 100%;
