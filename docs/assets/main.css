@@ -118,3 +118,7 @@ p {
     margin: 14px 4.5em 0px 4.5em;
     border: gray solid 0.5px;
 }
+
+h2 {
+    margin-bottom: 8px;
+}
