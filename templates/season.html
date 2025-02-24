@@ -68,7 +68,7 @@
                 <td>{{ tree.start | format_date }}</td>
                 <td>{{ tree.end | format_date }}</td>
                 <td>{{ tree.days }}</td>
-                <td>{{ tree.yield }} gal</td>
+                <td>{{ tree.yield | format_number }} gal</td>
             </tr>
             {% endfor %}
         </table>
@@ -177,8 +177,7 @@
             animations: false,
             responsive: true,
             borderRadius: 100,
-            barThickness: 5,
-            borderSkipped: false,
+            barThickness: 3,
             scales: {
                 x: {
                     type: 'time',
@@ -189,19 +188,20 @@
                         }
                     },
                     ticks: {
-                        autoSkip: true,
-                        autoSkipPadding: 20,
+                        maxTicksLimit: 4,
                         maxRotation: 0,
                         font: {
                             family: 'NationalPark'
                         },
                         color: "black",
-                        align: 'center'
+                        align: 'center',
+                        includeBounds: true,
                     },
                     min: xdata.at(0),
                     max: xdata.at(-1),
                     grid: {
                         display: false,
+                        offset: false,
                         borderColor: 'black'
                     }
                 },

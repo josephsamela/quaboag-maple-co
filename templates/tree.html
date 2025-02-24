@@ -70,7 +70,7 @@
                 <td>{{ yield.days}}</td>
 
                 {% if yield.yield is number %}
-                <td>{{ yield.yield }} gal</td>
+                <td>{{ yield.yield | format_number}} gal</td>
                 {% else %}
                 <td>{{ yield.yield }}</td>
                 {% endif %}

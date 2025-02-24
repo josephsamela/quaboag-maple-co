@@ -20,6 +20,7 @@ def main():
     environment.filters['format_date'] = format_date
     environment.filters['format_latitude'] = format_latitude
     environment.filters['format_longitude'] = format_longitude
+    environment.filters['format_number'] = format_number
 
     template_tree = environment.get_template("tree.html")
     template_inventory = environment.get_template("inventory.html")
@@ -202,6 +203,9 @@ def load_data(workbook, worksheet):
                     rowdict[header] = row[i]
             data.append(rowdict)
     return data
+
+def format_number(n):
+    return round(float(n), 1)
 
 def format_date(d):
     if isinstance(d, datetime) or isinstance(d, date):

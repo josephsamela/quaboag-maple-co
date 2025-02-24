@@ -76,7 +76,7 @@
                 <td>Feb 8</td>
                 <td>Mar 8</td>
                 <td>28</td>
-                <td>5 gal</td>
+                <td>5.0 gal</td>
             </tr>
             
             <tr>
@@ -84,7 +84,7 @@
                 <td>Feb 8</td>
                 <td>Mar 8</td>
                 <td>28</td>
-                <td>10 gal</td>
+                <td>10.0 gal</td>
             </tr>
             
             <tr>
@@ -92,7 +92,7 @@
                 <td>Feb 8</td>
                 <td>Mar 8</td>
                 <td>28</td>
-                <td>1 gal</td>
+                <td>1.0 gal</td>
             </tr>
             
         </table>
@@ -201,8 +201,7 @@
             animations: false,
             responsive: true,
             borderRadius: 100,
-            barThickness: 5,
-            borderSkipped: false,
+            barThickness: 3,
             scales: {
                 x: {
                     type: 'time',
@@ -213,19 +212,20 @@
                         }
                     },
                     ticks: {
-                        autoSkip: true,
-                        autoSkipPadding: 20,
+                        maxTicksLimit: 4,
                         maxRotation: 0,
                         font: {
                             family: 'NationalPark'
                         },
                         color: "black",
-                        align: 'center'
+                        align: 'center',
+                        includeBounds: true,
                     },
                     min: xdata.at(0),
                     max: xdata.at(-1),
                     grid: {
                         display: false,
+                        offset: false,
                         borderColor: 'black'
                     }
                 },
