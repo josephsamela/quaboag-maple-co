@@ -3,7 +3,6 @@
     "short_name": "Inventory",
     "display": "standalone",
     "orientation": "portrait",
-    "start_url": "samela.io/quaboag-maple-co/",
     "theme_color": "#0e4139",
     "background_color": "#0e4139",
     "icons": [
