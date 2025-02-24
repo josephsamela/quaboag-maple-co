@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <link rel="icon" href="../assets/icon.png" type="image/x-icon" />
+    <meta name="theme-color" content="#0e4139" />
+
+    <link rel="stylesheet" type="text/css" media="screen" href="../assets/main.css" />
+
+    <title>Season 2025</title>
+</head>
+
+<body>
+
+    <div class="section text-center">
+        <h1>Quaboag Maple Co.</h1>
+        <p class="subtitle">2025 Season Summary</p>
+    </div>
+
+    <!-- Summary -->
+    <div class="section">
+        <h2>Summary</h2>
+        <div class="wrapper summary">
+            <div>
+                <h1>Feb 8</h1>
+                <p>Start</p>
+            </div>
+            <div>
+                <h1>Mar 8</h1>
+                <p>End</p>
+            </div>
+            <div>
+                <h1>28<b> days</b></h1>
+                <p>Length</p>
+            </div>
+            <div>
+                <h1>4</h1>
+                <p>Trees Tapped</p>
+            </div>
+            <div>
+                <h1>18.5<b> gal</b></h1>
+                <p>Total Sap</p>
+            </div>
+            <div>
+                <h1>4.62<b> gal</b></h1>
+                <p>Sap Per Tree</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Performance -->
+    <div class="section">
+        <h2>Trees</h2>
+        <table>
+            <tr>
+                <th>TREE</th>
+                <th>START</th>
+                <th>END</th>
+                <th>DAYS</th>
+                <th>SAP</th>
+            </tr>
+            
+            <tr>
+                <td>01</td>
+                <td>Feb 8</td>
+                <td>Mar 8</td>
+                <td>28</td>
+                <td>2.5 gal</td>
+            </tr>
+            
+            <tr>
+                <td>02</td>
+                <td>Feb 8</td>
+                <td>Mar 8</td>
+                <td>28</td>
+                <td>5 gal</td>
+            </tr>
+            
+            <tr>
+                <td>03</td>
+                <td>Feb 8</td>
+                <td>Mar 8</td>
+                <td>28</td>
+                <td>10 gal</td>
+            </tr>
+            
+            <tr>
+                <td>04</td>
+                <td>Feb 8</td>
+                <td>Mar 8</td>
+                <td>28</td>
+                <td>1 gal</td>
+            </tr>
+            
+        </table>
+    </div>
+
+    <!-- Weather -->
+    <div class="section">
+        <h2>Weather</h2>
+        <div class="wrapper summary">
+            <div>
+                <h1>0<b>  days</b></h1>
+                <p>Warm Days</p>
+            </div>
+            <div>
+                <h1>13<b> days</b></h1>
+                <p>Cold Days</p>
+            </div>
+            <div>
+                <h1>4<b> days</b></h1>
+                <p>Good Days</p>
+            </div>
+        </div>
+
+        <canvas id="chart" height="300"></canvas>
+
+        <table>
+            <tr>
+                <td><div class="bubble" style="background-color: blue;"></div></td>
+                <td><small>Cold Day</small></td>
+                <td><small>Day & Night Below Freezing</small></td>
+            </tr>
+            <tr>
+                <td><div class="bubble" style="background-color: red;"></div></td>
+                <td><small>Warm Day</small></td>
+                <td><small>Day & Night Above Freezing</small></td>
+            </tr>
+            <tr>
+                <td><div class="bubble" style="background-color: green;"></div></td>
+                <td><small>Good Day</small></td>
+                <td><small>Day Above Freezing & Night Below Freezing</small></td>
+            </tr>
+            <tr>
+                <td><div class="bubble" style="background-color: gray;"></div></td>
+                <td><small>Ignore</small></td>
+                <td><small>Before Season Start or after Season End</small></td>
+            </tr>
+        </table>
+    </div>
+
+    <!-- Back Button -->
+    <div class="section">
+        <a href="../" class="plain-link">
+            <h3>←  Return to Tree Inventory.</h3>
+        </a>
+    </div>
+
+</body>
+
+<!-- Import Chart.js -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js@3.4.0/dist/chart.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.29.1/moment.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-moment@1.0.0/dist/chartjs-adapter-moment.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/hammerjs@2.0.8/hammer.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-zoom@1.1.0/dist/chartjs-plugin-zoom.min.js"></script>
+
+<script>
+
+    var xdata = ['2025-01-01', '2025-01-02', '2025-01-03', '2025-01-04', '2025-01-05', '2025-01-06', '2025-01-07', '2025-01-08', '2025-01-09', '2025-01-10', '2025-01-11', '2025-01-12', '2025-01-13', '2025-01-14', '2025-01-15', '2025-01-16', '2025-01-17', '2025-01-18', '2025-01-19', '2025-01-20', '2025-01-21', '2025-01-22', '2025-01-23', '2025-01-24', '2025-01-25', '2025-01-26', '2025-01-27', '2025-01-28', '2025-01-29', '2025-01-30', '2025-01-31', '2025-02-01', '2025-02-02', '2025-02-03', '2025-02-04', '2025-02-05', '2025-02-06', '2025-02-07', '2025-02-08', '2025-02-09', '2025-02-10', '2025-02-11', '2025-02-12', '2025-02-13', '2025-02-14', '2025-02-15', '2025-02-16', '2025-02-17', '2025-02-18', '2025-02-19', '2025-02-20', '2025-02-21', '2025-02-22', '2025-02-23', '2025-02-24', '2025-02-25', '2025-02-26', '2025-02-27', '2025-02-28', '2025-03-01', '2025-03-02', '2025-03-03', '2025-03-04', '2025-03-05', '2025-03-06', '2025-03-07', '2025-03-08', '2025-03-09', '2025-03-10', '2025-03-11', '2025-03-12', '2025-03-13', '2025-03-14', '2025-03-15', '2025-03-16', '2025-03-17', '2025-03-18', '2025-03-19', '2025-03-20', '2025-03-21', '2025-03-22', '2025-03-23', '2025-03-24', '2025-03-25', '2025-03-26', '2025-03-27', '2025-03-28', '2025-03-29', '2025-03-30', '2025-03-31', '2025-04-01']
+    var ydata = [[35, 43], [30, 38], [25, 34], [21, 28], [19, 30], [13, 22], [12, 24], [15, 24], [15, 25], [21, 39], [22, 30], [23, 35], [26, 36], [20, 28], [17, 25], [13, 27], [18, 33], [26, 39], [24, 40], [8, 22], [5, 14], [6, 18], [10, 26], [15, 29], [12, 26], [22, 35], [20, 35], [20, 33], [19, 42], [16, 24], [23, 40], [11, 32], [5, 24], [23, 41], [20, 41], [15, 26], [16, 33], [20, 36], [17, 30], [22, 30], [19, 31], [15, 29], [21, 29], [28, 37], [19, 30], [17, 26], [22, 33], [15, 25], [12, 20], [13, 26], [11, 28], [17, 31], [13, 32], [25, 38], [28, 41], ['-', '-'], ['-', '-'], ['-', '-'], ['-', '-'], ['-', '-'], ['-', '-'], ['-', '-'], ['-', '-'], ['-', '-'], ['-', '-'], ['-', '-'], ['-', '-'], ['-', '-'], ['-', '-'], ['-', '-'], ['-', '-'], ['-', '-'], ['-', '-'], ['-', '-'], ['-', '-'], ['-', '-'], ['-', '-'], ['-', '-'], ['-', '-'], ['-', '-'], ['-', '-'], ['-', '-'], ['-', '-'], ['-', '-'], ['-', '-'], ['-', '-'], ['-', '-'], ['-', '-'], ['-', '-'], ['-', '-'], ['-', '-']]
+    var colors = ['gray', 'gray', 'gray', 'gray', 'gray', 'gray', 'gray', 'gray', 'gray', 'gray', 'gray', 'gray', 'gray', 'gray', 'gray', 'gray', 'gray', 'gray', 'gray', 'gray', 'gray', 'gray', 'gray', 'gray', 'gray', 'gray', 'gray', 'gray', 'gray', 'gray', 'gray', 'gray', 'gray', 'gray', 'gray', 'gray', 'gray', 'gray', 'blue', 'blue', 'blue', 'blue', 'blue', 'green', 'blue', 'blue', 'green', 'blue', 'blue', 'blue', 'blue', 'blue', 'blue', 'green', 'green', 'gray', 'gray', 'gray', 'gray', 'gray', 'gray', 'gray', 'gray', 'gray', 'gray', 'gray', 'gray', 'gray', 'gray', 'gray', 'gray', 'gray', 'gray', 'gray', 'gray', 'gray', 'gray', 'gray', 'gray', 'gray', 'gray', 'gray', 'gray', 'gray', 'gray', 'gray', 'gray', 'gray', 'gray', 'gray', 'gray']
+
+    const zoomOptions = {
+        zoom: {
+            wheel: {
+                enabled: true,
+            },
+            pinch: {
+                enabled: true,
+            },
+            mode: 'x',
+            limits: {
+                max: 'original'
+            }
+        },
+        pan: {
+            enabled: true,
+            mode: 'x',
+        }
+    };
+
+    const config = {
+        type: 'bar',
+        data: {
+            labels: xdata,
+            datasets: [{
+                data: ydata,
+                backgroundColor: colors,
+                labels: {
+                    font: {
+                        family: 'NationalPark'
+                    }
+                }
+            }]
+        },
+        options: {
+            animations: false,
+            responsive: true,
+            borderRadius: 100,
+            barThickness: 5,
+            borderSkipped: false,
+            scales: {
+                x: {
+                    type: 'time',
+                    time: {
+                        unit: 'month',
+                        displayFormats: {
+                            month: 'MMM'
+                        }
+                    },
+                    ticks: {
+                        autoSkip: true,
+                        autoSkipPadding: 20,
+                        maxRotation: 0,
+                        font: {
+                            family: 'NationalPark'
+                        },
+                        color: "black",
+                        align: 'center'
+                    },
+                    min: xdata.at(0),
+                    max: xdata.at(-1),
+                    grid: {
+                        display: false,
+                        borderColor: 'black'
+                    }
+                },
+                y: {
+                    display: false
+                }
+            },
+            plugins: {
+                legend: {
+                    display: false
+                }
+            }
+        },
+    };
+
+    var myChart = new Chart(
+        document.getElementById('chart').getContext('2d'),
+        config
+    );
+
+</script>

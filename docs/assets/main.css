@@ -5,7 +5,6 @@
 
 body {
     margin: 0px;
-    padding: 0px 1em 1em 1em;
     font-family: 'NationalPark';
     font-synthesis: none !important;
 }
@@ -13,11 +12,11 @@ body {
 .section {
     max-width: 400px;
     min-width: 340px;
-    margin: 1em auto 1em auto;
+    margin: 2em auto 2em auto;
 }
 
 h1 {
-    margin-bottom: 10px;
+    margin: 10px 0px 0px 0px
 }
 
 h3 {
@@ -34,6 +33,7 @@ table {
 }
 table th {
     text-align: left;
+    width: 21%;
 }
 td {
     height: 23px;
@@ -44,6 +44,10 @@ td {
     grid-template-columns: repeat(2, [col-start] 1fr);
     grid-row-gap: 0.5em;
     grid-column-gap: 1em;
+}
+.summary {
+    grid-template-columns: repeat(3, [col-start] 1fr);
+    grid-column-gap: 3.75em;
 }
 .wrapper img {
     width: 100%;
@@ -121,4 +125,21 @@ p {
 
 h2 {
     margin-bottom: 8px;
+}
+
+h1 b {
+    font-size: 40%; 
+    font-weight: normal 
+}
+
+#chart {
+    margin: 2em 0px 1em 0px;
+    width: 100%;
+    height: 300px;
+}
+
+.bubble {
+    width: 12px;
+    height: 12px;
+    border-radius: 10px;
 }

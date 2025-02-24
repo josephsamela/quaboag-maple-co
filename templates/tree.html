@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
     <link rel="stylesheet" type="text/css" media="screen" href="../assets/main.css" />
 
-    <title>Quaboag Maple Co. | Tree {{ tree.id }}</title>
+    <title>Tree {{ tree.id }}</title>
 </head>
 
 <body>
@@ -59,6 +59,7 @@
                 <th>SEASON</th>
                 <th>START</th>
                 <th>END</th>
+                <th>DAYS</th>
                 <th>SAP</th>
             </tr>
             {% for yield in yields %}
@@ -66,6 +67,7 @@
                 <td>{{ yield.season }}</td>
                 <td>{{ yield.start | format_date }}</td>
                 <td>{{ yield.end | format_date }}</td>
+                <td>{{ yield.days}}</td>
 
                 {% if yield.yield is number %}
                 <td>{{ yield.yield }} gal</td>

@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <link rel="icon" href="../assets/icon.png" type="image/x-icon" />
+    <meta name="theme-color" content="#0e4139" />
+
+    <link rel="stylesheet" type="text/css" media="screen" href="../assets/main.css" />
+
+    <title>Season {{ data.season }}</title>
+</head>
+
+<body>
+
+    <div class="section text-center">
+        <h1>Quaboag Maple Co.</h1>
+        <p class="subtitle">{{ data.season }} Season Summary</p>
+    </div>
+
+    <!-- Summary -->
+    <div class="section">
+        <h2>Summary</h2>
+        <div class="wrapper summary">
+            <div>
+                <h1>{{ data.season_start | format_date }}</h1>
+                <p>Start</p>
+            </div>
+            <div>
+                <h1>{{ data.season_end | format_date }}</h1>
+                <p>End</p>
+            </div>
+            <div>
+                <h1>{{ data.season_length }}<b> days</b></h1>
+                <p>Length</p>
+            </div>
+            <div>
+                <h1>{{ data.trees_tapped }}</h1>
+                <p>Trees Tapped</p>
+            </div>
+            <div>
+                <h1>{{ data.total_sap }}<b> gal</b></h1>
+                <p>Total Sap</p>
+            </div>
+            <div>
+                <h1>{{ data.sap_per_tree }}<b> gal</b></h1>
+                <p>Sap Per Tree</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Performance -->
+    <div class="section">
+        <h2>Trees</h2>
+        <table>
+            <tr>
+                <th>TREE</th>
+                <th>START</th>
+                <th>END</th>
+                <th>DAYS</th>
+                <th>SAP</th>
+            </tr>
+            {% for tree in data.trees %}
+            <tr>
+                <td>{{ tree.tree }}</td>
+                <td>{{ tree.start | format_date }}</td>
+                <td>{{ tree.end | format_date }}</td>
+                <td>{{ tree.days }}</td>
+                <td>{{ tree.yield }} gal</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+
+    <!-- Weather -->
+    <div class="section">
+        <h2>Weather</h2>
+        <div class="wrapper summary">
+            <div>
+                <h1>{{ data.warm_days }}<b>  days</b></h1>
+                <p>Warm Days</p>
+            </div>
+            <div>
+                <h1>{{ data.cold_days }}<b> days</b></h1>
+                <p>Cold Days</p>
+            </div>
+            <div>
+                <h1>{{ data.good_days }}<b> days</b></h1>
+                <p>Good Days</p>
+            </div>
+        </div>
+
+        <canvas id="chart" height="300"></canvas>
+
+        <table>
+            <tr>
+                <td><div class="bubble" style="background-color: blue;"></div></td>
+                <td><small>Cold Day</small></td>
+                <td><small>Day & Night Below Freezing</small></td>
+            </tr>
+            <tr>
+                <td><div class="bubble" style="background-color: red;"></div></td>
+                <td><small>Warm Day</small></td>
+                <td><small>Day & Night Above Freezing</small></td>
+            </tr>
+            <tr>
+                <td><div class="bubble" style="background-color: green;"></div></td>
+                <td><small>Good Day</small></td>
+                <td><small>Day Above Freezing & Night Below Freezing</small></td>
+            </tr>
+            <tr>
+                <td><div class="bubble" style="background-color: gray;"></div></td>
+                <td><small>Ignore</small></td>
+                <td><small>Before Season Start or after Season End</small></td>
+            </tr>
+        </table>
+    </div>
+
+    <!-- Back Button -->
+    <div class="section">
+        <a href="../" class="plain-link">
+            <h3>←  Return to Tree Inventory.</h3>
+        </a>
+    </div>
+
+</body>
+
+<!-- Import Chart.js -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js@3.4.0/dist/chart.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.29.1/moment.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-moment@1.0.0/dist/chartjs-adapter-moment.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/hammerjs@2.0.8/hammer.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-zoom@1.1.0/dist/chartjs-plugin-zoom.min.js"></script>
+
+<script>
+
+    var xdata = {{ data.weather.days }}
+    var ydata = {{ data.weather.temps }}
+    var colors = {{ data.weather.colors }}
+
+    const zoomOptions = {
+        zoom: {
+            wheel: {
+                enabled: true,
+            },
+            pinch: {
+                enabled: true,
+            },
+            mode: 'x',
+            limits: {
+                max: 'original'
+            }
+        },
+        pan: {
+            enabled: true,
+            mode: 'x',
+        }
+    };
+
+    const config = {
+        type: 'bar',
+        data: {
+            labels: xdata,
+            datasets: [{
+                data: ydata,
+                backgroundColor: colors,
+                labels: {
+                    font: {
+                        family: 'NationalPark'
+                    }
+                }
+            }]
+        },
+        options: {
+            animations: false,
+            responsive: true,
+            borderRadius: 100,
+            barThickness: 5,
+            borderSkipped: false,
+            scales: {
+                x: {
+                    type: 'time',
+                    time: {
+                        unit: 'month',
+                        displayFormats: {
+                            month: 'MMM'
+                        }
+                    },
+                    ticks: {
+                        autoSkip: true,
+                        autoSkipPadding: 20,
+                        maxRotation: 0,
+                        font: {
+                            family: 'NationalPark'
+                        },
+                        color: "black",
+                        align: 'center'
+                    },
+                    min: xdata.at(0),
+                    max: xdata.at(-1),
+                    grid: {
+                        display: false,
+                        borderColor: 'black'
+                    }
+                },
+                y: {
+                    display: false
+                }
+            },
+            plugins: {
+                legend: {
+                    display: false
+                }
+            }
+        },
+    };
+
+    var myChart = new Chart(
+        document.getElementById('chart').getContext('2d'),
+        config
+    );
+
+</script>
