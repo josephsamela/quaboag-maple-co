@@ -48,7 +48,7 @@ td {
 .wrapper img {
     width: 100%;
     aspect-ratio: 1 / 1;
-    border-radius: 12px;
+    border-radius: 14px;
     background-color: lightgray;
 }
 
@@ -83,8 +83,8 @@ p {
 }
 
 #map { 
-    height: 210px; 
-    border-radius: 12px;
+    height: 220px;
+    border-radius: 14px;
     margin: 1em 0px 1em 0px;
 }
 
@@ -115,5 +115,5 @@ p {
     height:10px;
     border-radius: 10px;
     margin: 14px 4.5em 0px 4.5em;
-    border: black solid 0.5px;
+    border: gray solid 0.5px;
 }
