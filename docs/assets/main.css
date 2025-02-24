@@ -90,7 +90,7 @@ p {
 }
 
 .map-pin {
-    filter: hue-rotate(170deg)
+    filter: hue-rotate(150deg)
 }
 
 .map-pin-text {
